@@ -1,4 +1,4 @@
-import { updateById } from '/lib/helpers';
+import { updateById } from '../../lib/helpers';
 
 const defaultState = {
   byId: {},

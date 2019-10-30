@@ -9,7 +9,7 @@ import {
   message,
 } from 'antd';
 
-function AdminAdd(props) {
+function VolunteerAdd(props) {
   const { getFieldDecorator } = props.form;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -21,11 +21,11 @@ function AdminAdd(props) {
           setIsSubmitting(true);
           await props.createUser({
             ...values,
-            role: 'admin',
+            role: 'voluneer',
             isApproved: true,
           });
-          message.success('Admin created successfully.');
-          props.history.push('/admins/list');
+          message.success('Volunteer created successfully.');
+          props.history.push('/volunteers/list');
         } catch (error) {
           message.error(error.message);
           setIsSubmitting(false);
@@ -36,7 +36,7 @@ function AdminAdd(props) {
 
   return (
     <Card
-      title={<div>Add Admin <Link to="/admins/list" style={{ float: 'right' }}>Back To List</Link></div>}
+      title={<div>Add Volunteer <Link to="/volunteers/list" style={{ float: 'right' }}>Back To List</Link></div>}
     >
       <form onSubmit={handleSubmit}>
         <Form.Item label="Name">
@@ -72,4 +72,4 @@ function AdminAdd(props) {
   );
 }
 
-export default Form.create()(AdminAdd);
+export default Form.create()(VolunteerAdd);

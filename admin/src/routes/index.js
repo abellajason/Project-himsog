@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import MainLayout from '../modules/core/containers/MainLayout';
 import Login from '../modules/core/containers/Login';
 import Signup from '../modules/core/containers/Signup';
+import Admins from '../modules/admins/routes';
+import Volunteers from '../modules/volunteers/routes';
 
 function NotFound() {
   return (
@@ -63,7 +65,10 @@ class MainRoutes extends React.Component {
       <Switch>
         <UnauthenticatedOnlyRoute path="/login" component={Login} isAuthenticated={isAuthenticated}></UnauthenticatedOnlyRoute>
         <UnauthenticatedOnlyRoute path="/signup" component={Signup} isAuthenticated={isAuthenticated}></UnauthenticatedOnlyRoute>
+        <PrivateRoute path="/volunteers" component={Volunteers} {...{isAuthenticated}}></PrivateRoute>
+        <PrivateRoute path="/admins" component={Admins} {...{isAuthenticated}}></PrivateRoute>
         <PrivateRoute component={NotFound} isAuthenticated={isAuthenticated}></PrivateRoute>
+
       </Switch>
     );
   }
