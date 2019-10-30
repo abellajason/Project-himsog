@@ -15,7 +15,7 @@ export default function DonationAdd() {
         <img src="/logo512.png" alt="" style={{ maxWidth: 200 }} />
       <div style={{margin: '20px 0px 40px 0px', maxWidth: '600px'}}>
         <h1 style={{marginBottom: '20px', fontWeight: 'bold'}}>Your generosity matters.</h1>
-        <h3>To add a donation, you just need to input your name, organization/company, both can be left blank for anonimity, then your donation amount.</h3>
+        <h3>To donate, you just need to input your name, organization/company, both can be left blank for anonimity, then your donation amount.</h3>
       </div>
 
       <Card style={{ margin: 'auto', maxWidth: 600 }}>
