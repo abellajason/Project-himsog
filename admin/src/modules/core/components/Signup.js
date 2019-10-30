@@ -72,7 +72,7 @@ function Signup(props) {
           </div>
           <h3>
             <center>
-              <span style={{fontFamily: 'Arial', fontWeight: 'bold' }}> Become a Volunteer </span>
+              <span style={{fontFamily: 'Arial', fontWeight: 'bold' }}> Be a Volunteer </span>
             </center>
           </h3>
           <div>
