@@ -15,11 +15,6 @@ import { Link } from 'react-router-dom';
 function getColumns() {
   return  [
     {
-      title: 'ID',
-      dataIndex: '_id',
-      key: '_id',
-    },
-    {
       title: 'First Name',
       dataIndex: 'firstname',
       key: 'firstname',
@@ -33,6 +28,29 @@ function getColumns() {
       title: 'Last Name',
       dataIndex: 'lastname',
       key: 'lastname',
+    },
+    {
+      title: 'Height',
+      dataIndex: 'height',
+      key: 'height',
+    },
+    {
+      title: 'Weight',
+      dataIndex: 'weight',
+      key: 'weight',
+    },
+    {
+      title: 'Age',
+      dataIndex: 'age',
+      key: 'age',
+    },
+    {
+      title: 'BMI',
+      dataIndex: 'bmi',
+      key: 'bmi',
+      render: (bmi) => {
+        return bmi ? Math.round(bmi * 100) / 100 : bmi
+      }
     },
     {
       title: '',
