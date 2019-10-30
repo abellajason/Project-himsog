@@ -60,7 +60,7 @@ export default function VolunteerList(props) {
 
   return (
     <Card
-      title={<div>List of Volunteers <Link to="/volunteers/add" style={{ float: 'right' }}>New</Link></div>}
+      title={<div>List of Volunteers <Link to="/volunteers/add" style={{ float: 'right' }}></Link></div>}
     >
       <Table columns={columns} dataSource={dataSource} rowKey="_id" size="small" loading={isFetching}/>
     </Card>
