@@ -1,0 +1,50 @@
+:root {
+  --primary: #1890ff;
+  --danger: #f5222d;
+}
+
+body {
+  background-color: #f0f2f5;
+  /* background-color: #3ba6de; */
+}
+
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 300px;
+  line-height: 300px;
+  background: #f0f1f5;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide img {
+  margin: 0 auto;
+}
+
+.bid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

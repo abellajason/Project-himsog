@@ -1,0 +1,31 @@
+{
+  "name": "adam",
+  "version": "1.0.0",
+  "description": "- Apprehensive Dangerous Area Mapping",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "backend:install": "cd backend && npm install",
+    "admin:install": "cd admin && npm install",
+    "backend": "cd backend && npm start",
+    "admin": "cd admin && npm start",
+    "start": "concurrently \"npm run backend\" \"npm run admin\"",
+    "postinstall": "concurrently \"npm run backend:install\" \"npm run admin:install\"",
+    "stop": "kill -9 $(lsof -t -i:3000); kill -9 $(lsof -t -i:3030)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giovannilobitos/ADAM.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giovannilobitos/ADAM/issues"
+  },
+  "homepage": "https://github.com/giovannilobitos/ADAM#readme",
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  }
+}
