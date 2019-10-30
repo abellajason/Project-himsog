@@ -48,6 +48,7 @@ function AdminAdd(props) {
   return (
     <Card
       title={<div>Add Child <Link to="/children/list" style={{ float: 'right' }}>Back To List</Link></div>}
+      style={{ maxWidth: 800, margin: 'auto' }}
     >
       <form onSubmit={handleSubmit}>
         <Form.Item label="First Name">
