@@ -12,6 +12,7 @@ import Volunteers from '../modules/volunteers/routes';
 import Children from '../modules/children/routes';
 import Dashboard from '../modules/dashboard/containers/Dashboard';
 import DonationAdd from '../modules/donations/containers/DonationAdd';
+import { StripeProvider, Elements } from 'react-stripe-elements';
 
 function NotFound() {
   return (
@@ -66,7 +67,15 @@ class MainRoutes extends React.Component {
 
     return (
       <Switch>
-        <Route exact path="/donate" component={DonationAdd}></Route>
+        <Route exact path="/donate" render={() => {
+          return (
+            <StripeProvider apiKey="pk_test_UCXlnZFICCob5QP5ugmyUke600ov7ZUh4v">
+              <Elements>
+                <DonationAdd />
+              </Elements>
+            </StripeProvider>
+          )
+        }}></Route>
         <UnauthenticatedOnlyRoute path="/login" component={Login} isAuthenticated={isAuthenticated}></UnauthenticatedOnlyRoute>
         <UnauthenticatedOnlyRoute path="/signup" component={Signup} isAuthenticated={isAuthenticated}></UnauthenticatedOnlyRoute>
         <PrivateRoute path="/volunteers" component={Volunteers} {...{isAuthenticated}}></PrivateRoute>

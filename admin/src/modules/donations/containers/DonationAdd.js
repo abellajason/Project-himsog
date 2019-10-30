@@ -1,5 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { createDonation } from '../actions';
 
 import Component from '../components/DonationAdd';
 
@@ -12,6 +13,7 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return (
     bindActionCreators({
+      createDonation,
     }, dispatch)
   );
 };
