@@ -44,13 +44,14 @@ module.exports = {
     get: [],
     create: [
       async (context) => {
-        const { result: { child_id, age, bmi, weight, height }, app } = context;
+        const { result: { child_id, age, bmi, weight, height, isMalnourished }, app } = context;
 
         await app.service('children').patch(child_id, {
           age,
           bmi,
           weight,
-          height
+          height,
+          isMalnourished,
         });
 
         return context;

@@ -7,8 +7,8 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const records = new Schema({
     child_id: { type: Schema.Types.ObjectId, required: true },
-    height: { type: Number },
-    weight: { type: Number },
+    height: { type: Number, required: true },
+    weight: { type: Number, required: true },
     age: {  type: Number },
     bmi: { type: Number },
     isMalnourished: { type: Boolean },
