@@ -63,14 +63,16 @@ function Signup(props) {
   const { getFieldDecorator } = form;
 
   return (
-      <div style={{ paddingTop: '5%', textAlign: '' }}>
+      <div style={{ paddingTop: '2%', textAlign: '' }}>
         <Card style={{ margin: 'auto', maxWidth: 400 }}>
           <div style={{ padding: 15 }}>
-            {/* <img src={logo} style={{ maxWidth: 200 }}/> */}
+            <center>
+              <img src="/logo512.png" alt="" style={{ maxWidth: 150 }} />
+            </center>
           </div>
           <h3>
             <center>
-              Signup
+              <span style={{fontFamily: 'Arial', fontWeight: 'bold' }}> Become a Volunteer </span>
             </center>
           </h3>
           <div>
@@ -81,7 +83,7 @@ function Signup(props) {
             </small>
           </div>
           <Form onSubmit={handleSubmit} className="login-form" style={{ margin: 'auto' }}>
-            <Form.Item label="Name">
+            <Form.Item label="Name" style={{ marginBottom: '5px' }}>
               {
                 getFieldDecorator('name', {
                   rules: [{ required: true, message: 'Please input your name.' }],
@@ -90,7 +92,7 @@ function Signup(props) {
                 )
               }
             </Form.Item>
-            <Form.Item label="Email">
+            <Form.Item label="Email" style={{ marginBottom: '5px' }}>
               {
                 getFieldDecorator('email', {
                   rules: [{ required: true, message: 'Please input your email.' }],
@@ -99,7 +101,16 @@ function Signup(props) {
                 )
               }
             </Form.Item>
-            <Form.Item label="Password" hasFeedback>
+            <Form.Item label="Organization/Company" style={{ marginBottom: '5px' }}>
+              {
+                getFieldDecorator('organization', {
+                  rules: [{ required: true, message: 'Please input your organization/company.' }],
+                })(
+                  <Input prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Organization/Company" />,
+                )
+              }
+            </Form.Item>
+            <Form.Item label="Password" hasFeedback style={{ marginBottom: '5px' }}>
                 {getFieldDecorator('password', {
                   rules: [
                     {
@@ -112,7 +123,7 @@ function Signup(props) {
                   ],
                 })(<Input.Password placeholder="******" />)}
               </Form.Item>
-            <Form.Item label="Confirm Password" hasFeedback>
+            <Form.Item label="Confirm Password" hasFeedback style={{ marginBottom: '5px' }}>
             {getFieldDecorator('confirm', {
               rules: [
                 {
@@ -127,10 +138,10 @@ function Signup(props) {
           </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" className="login-form-button" loading={isSubmitting}>
-                Log In
+              <Button type="primary" htmlType="submit" className="login-form-button" loading={isSubmitting} style={{ fontWeight: 'bold' }}>
+                Join
               </Button>
-              <Link to="/login">Login Here</Link>
+              <span>Already have an account? </span><Link to="/login" style={{ fontWeight: 'bold' }}>Login Here</Link>
             </Form.Item>
           </Form>
         </Card>

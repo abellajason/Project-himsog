@@ -31,6 +31,10 @@ export default function MainLayout(props) {
         defaultSelectedKeys={[defaultPath]}
         style={{ lineHeight: '62px', borderBottom: 'none' }}
       >
+        <Link to="/">
+          <img src="/logo192.png" alt="" style={{ maxWidth: 60, padding: '10px' }} />
+        </Link>
+        
         <Menu.Item key="/">
           <Link to="/">Home</Link>
         </Menu.Item>
@@ -88,7 +92,7 @@ export default function MainLayout(props) {
           */
         }
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+      <Footer style={{ textAlign: 'center' }}>Project Himsog © 2019 Powered by Ant UED</Footer>
     </Layout>
   );
 }
