@@ -12,13 +12,14 @@ module.exports = function (app) {
     gender: { type: String },
     birthdate: { type: Date },
     region: String,
-    city: String,
     province: String,
+    city: String,
     barangay: String,
-    height: { type: Number },
-    weight: { type: Number },
+    height: { type: Number, required: true },
+    weight: { type: Number, required: true },
     bmi: { type: Number },
     isMalnourished: { type: Boolean },
+    age: Number,
   }, {
     timestamps: true
   });

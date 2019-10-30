@@ -11,6 +11,7 @@ import {
 } from 'antd';
 
 function AdminAdd(props) {
+  const { history, createChild } = props;
   const { getFieldDecorator } = props.form;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -20,18 +21,18 @@ function AdminAdd(props) {
       if (!err) {
         try {
           setIsSubmitting(true);
-          await props.createChild({
+          await createChild({
             ...values,
           });
           message.success('Child added successfully.');
-          props.history.push('/children/list');
+          history.push('/children/list');
         } catch (error) {
           message.error(error.message);
           setIsSubmitting(false);
         }
       }
     });
-  }, [props]);
+  }, [createChild, history, props.form]);
 
   return (
     <Card
