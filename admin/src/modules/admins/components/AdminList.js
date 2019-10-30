@@ -2,7 +2,6 @@ import React, {
   useState,
   useEffect,
   useMemo,
-  useCallback,
 } from 'react';
 
 import {
@@ -34,21 +33,22 @@ const columns = [
 export default function AdminList(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [userIds, setUserIds] = useState(null);
-
-  const fetchData = useCallback(async () => {
-    setIsFetching(true);
-    try {
-      const users = await props.getUsers({ $limit: 9999, $sort: { _id: -1 }, role: 'admin' });
-      setUserIds(users.data.map(({ _id }) => _id));
-    } catch (error) {
-      message.error(error.message);
-    }
-    setIsFetching(false);
-  }, [props]);
+  const { getUsers } = props;
 
   useEffect(() => {
+    const fetchData = async () => {
+      setIsFetching(true);
+      try {
+        const users = await getUsers({ $limit: 9999, $sort: { _id: -1 }, role: 'admin' });
+        setUserIds(users.data.map(({ _id }) => _id));
+      } catch (error) {
+        message.error(error.message);
+      }
+      setIsFetching(false);
+    }
+
     fetchData();
-  }, [fetchData]);
+  }, [getUsers]);
 
   const dataSource = useMemo(() => {
     if (!userIds) {
