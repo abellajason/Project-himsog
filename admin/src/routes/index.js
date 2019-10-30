@@ -9,6 +9,7 @@ import Login from '../modules/core/containers/Login';
 import Signup from '../modules/core/containers/Signup';
 import Admins from '../modules/admins/routes';
 import Volunteers from '../modules/volunteers/routes';
+import Children from '../modules/children/routes';
 import Dashboard from '../modules/dashboard/containers/Dashboard';
 
 function NotFound() {
@@ -68,6 +69,8 @@ class MainRoutes extends React.Component {
         <UnauthenticatedOnlyRoute path="/signup" component={Signup} isAuthenticated={isAuthenticated}></UnauthenticatedOnlyRoute>
         <PrivateRoute path="/volunteers" component={Volunteers} {...{isAuthenticated}}></PrivateRoute>
         <PrivateRoute path="/admins" component={Admins} {...{isAuthenticated}}></PrivateRoute>
+        <PrivateRoute path="/children" component={Children} {...{isAuthenticated}}></PrivateRoute>
+
         <PrivateRoute exact path="/" component={Dashboard} {...{ isAuthenticated }}></PrivateRoute>
         <PrivateRoute path="/dashboard" component={Dashboard} {...{ isAuthenticated }}></PrivateRoute>
         <PrivateRoute component={NotFound} isAuthenticated={isAuthenticated}></PrivateRoute>
