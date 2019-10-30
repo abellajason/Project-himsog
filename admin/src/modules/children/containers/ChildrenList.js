@@ -7,7 +7,7 @@ import Component from '../components/ChildrenList';
 const mapStateToProps = function (state) {
   return {
     ...state.core,
-    users: state.users,
+    children: state.children,
   };
 };
 

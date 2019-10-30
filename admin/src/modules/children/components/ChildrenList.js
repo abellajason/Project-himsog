@@ -19,14 +19,19 @@ const columns = [
     key: '_id',
   },
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: 'First Name',
+    dataIndex: 'firstname',
+    key: 'firstname',
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
+    title: 'Middle Name',
+    dataIndex: 'middlename',
+    key: 'middlename',
+  },
+  {
+    title: 'Last Name',
+    dataIndex: 'lastname',
+    key: 'lastname',
   },
 ];
 
@@ -55,8 +60,8 @@ export default function AdminList(props) {
       return null;
     }
 
-    return dataIds.map(_id => props.users.byId[_id] || {});
-  }, [props.users.byId, dataIds]);
+    return dataIds.map(_id => props.children.byId[_id] || {});
+  }, [props.children.byId, dataIds]);
 
   return (
     <Card
