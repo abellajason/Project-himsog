@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import UserList from './containers/UserList';
-import UserAdd from './containers/UserAdd';
+import AdminList from './containers/AdminList';
+import AdminAdd from './containers/AdminAdd';
 
 export default function UsersRoutes() {
   return (
     <div>
-      <Route exact path="/users/list/:pageNum?" component={UserList}></Route>
-      <Route exact path="/users/add" component={UserAdd}></Route>
+      <Route exact path="/admins/list/:pageNum?" component={AdminList}></Route>
+      <Route exact path="/admins/add" component={AdminAdd}></Route>
     </div>
   );
 }

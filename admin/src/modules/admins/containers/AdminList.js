@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getUsers } from '/modules/users/actions';
+import { getUsers } from '../../users/actions';
 
 import Component from '../components/AdminList';
 

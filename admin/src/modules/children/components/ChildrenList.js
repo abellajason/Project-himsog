@@ -32,15 +32,15 @@ const columns = [
 
 export default function AdminList(props) {
   const [isFetching, setIsFetching] = useState(false);
-  const [userIds, setUserIds] = useState(null);
-  const { getUsers } = props;
+  const [dataIds, setDataIds] = useState(null);
+  const { getChildren } = props;
 
   useEffect(() => {
     const fetchData = async () => {
       setIsFetching(true);
       try {
-        const users = await getUsers({ $limit: 9999, $sort: { _id: -1 }, role: 'admin' });
-        setUserIds(users.data.map(({ _id }) => _id));
+        const result = await getChildren({ $limit: 9999, $sort: { _id: -1 } });
+        setDataIds(result.data.map(({ _id }) => _id));
       } catch (error) {
         message.error(error.message);
       }
@@ -48,19 +48,19 @@ export default function AdminList(props) {
     }
 
     fetchData();
-  }, [getUsers]);
+  }, [getChildren]);
 
   const dataSource = useMemo(() => {
-    if (!userIds) {
+    if (!dataIds) {
       return null;
     }
 
-    return userIds.map(_id => props.users.byId[_id] || {});
-  }, [props.users.byId, userIds]);
+    return dataIds.map(_id => props.users.byId[_id] || {});
+  }, [props.users.byId, dataIds]);
 
   return (
     <Card
-      title={<div>List of Admins <Link to="/admins/add" style={{ float: 'right' }}>New</Link></div>}
+      title={<div>List of Children <Link to="/children/add" style={{ float: 'right' }}>New</Link></div>}
     >
       <Table columns={columns} dataSource={dataSource} rowKey="_id" size="small" loading={isFetching}/>
     </Card>

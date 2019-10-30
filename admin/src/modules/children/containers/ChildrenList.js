@@ -1,19 +1,20 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { createUser } from '../../users/actions';
+import { getChildren } from '../actions';
 
-import Component from '../components/AdminAdd';
+import Component from '../components/ChildrenList';
 
 const mapStateToProps = function (state) {
   return {
     ...state.core,
+    users: state.users,
   };
 };
 
 const mapDispatchToProps = function (dispatch) {
   return (
     bindActionCreators({
-      createUser,
+      getChildren,
     }, dispatch)
   );
 };

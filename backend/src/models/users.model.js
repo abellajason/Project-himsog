@@ -6,7 +6,11 @@ module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const users = new mongooseClient.Schema({
     email: { type: String, unique: true, lowercase: true },
-    role: { type: String, enum: ['admin', 'volunteer'] },
+    role: {
+      type: String,
+      enum: ['admin', 'volunteer'],
+      default: 'volunteer',
+    },
     name: { type: String },
     organization: { type: String },
     password: { type: String },

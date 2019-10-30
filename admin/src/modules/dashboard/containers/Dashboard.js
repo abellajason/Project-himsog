@@ -1,8 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { createUser } from '../../users/actions';
-
-import Component from '../components/AdminAdd';
+import Component from '../components/Dashboard';
 
 const mapStateToProps = function (state) {
   return {
@@ -13,7 +11,6 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return (
     bindActionCreators({
-      createUser,
     }, dispatch)
   );
 };

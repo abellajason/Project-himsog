@@ -15,7 +15,7 @@ const initializeApp = function () {
   ReactDOM.render(<MainApp/>, document.getElementById('root'));
 };
 
-app.on('authenticated', ({user: mainUser}) => {
+app.on('authenticated', ({ user: mainUser }) => {
   (function getmainUser() {
     store.dispatch({
       type: 'LOGIN',

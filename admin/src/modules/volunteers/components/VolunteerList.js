@@ -30,16 +30,18 @@ const columns = [
   },
 ];
 
-export default function AdminList(props) {
+export default function VolunteerList(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [userIds, setUserIds] = useState(null);
-  const { getUsers } = props;
+
+    const { getUsers } = props;
+
 
   useEffect(() => {
     const fetchData = async () => {
       setIsFetching(true);
       try {
-        const users = await getUsers({ $limit: 9999, $sort: { _id: -1 }, role: 'admin' });
+        const users = await getUsers({ $limit: 9999, $sort: { _id: -1 }, role: 'volunteer' });
         setUserIds(users.data.map(({ _id }) => _id));
       } catch (error) {
         message.error(error.message);
@@ -60,7 +62,7 @@ export default function AdminList(props) {
 
   return (
     <Card
-      title={<div>List of Admins <Link to="/admins/add" style={{ float: 'right' }}>New</Link></div>}
+      title={<div>List of Volunteers <Link to="/volunteers/add" style={{ float: 'right' }}></Link></div>}
     >
       <Table columns={columns} dataSource={dataSource} rowKey="_id" size="small" loading={isFetching}/>
     </Card>

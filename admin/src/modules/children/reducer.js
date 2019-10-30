@@ -6,7 +6,7 @@ const defaultState = {
 
 export default function usersReducer(state = defaultState, action) {
   switch (action.type) {
-    case 'USER_LIST': {
+    case 'CHILD_LIST': {
       let byId = { ...state.byId };
 
       action.data.data.forEach((row) => {
@@ -19,8 +19,8 @@ export default function usersReducer(state = defaultState, action) {
       };
     }
 
-    case 'UPDATE_USER':
-    case 'CREATE_USER': {
+    case 'UPDATE_CHILD':
+    case 'CREATE_CHILD': {
       return {
         ...state,
         byId: updateById(state.byId, action.data),

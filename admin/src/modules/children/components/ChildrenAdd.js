@@ -19,13 +19,11 @@ function AdminAdd(props) {
       if (!err) {
         try {
           setIsSubmitting(true);
-          await props.createUser({
+          await props.createChild({
             ...values,
-            role: 'admin',
-            isApproved: true,
           });
           message.success('Admin created successfully.');
-          props.history.push('/admins/list');
+          props.history.push('/children/list');
         } catch (error) {
           message.error(error.message);
           setIsSubmitting(false);
@@ -36,7 +34,7 @@ function AdminAdd(props) {
 
   return (
     <Card
-      title={<div>Add Admin <Link to="/admins/list" style={{ float: 'right' }}>Back To List</Link></div>}
+      title={<div>Add Child <Link to="/children/list" style={{ float: 'right' }}>Back To List</Link></div>}
     >
       <form onSubmit={handleSubmit}>
         <Form.Item label="Name">
