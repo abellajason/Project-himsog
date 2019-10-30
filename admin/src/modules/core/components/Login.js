@@ -71,7 +71,7 @@ function NormalLoginForm(props) {
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button" loading={isLoggingIn}>
               Log In
-              </Button>
+            </Button>
             <span>Don't have an account? </span><Link to="/signup" style={{ fontWeight: 'bold' }}>Signup Here</Link>
           </Form.Item>
         </Form>
