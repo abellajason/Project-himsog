@@ -7,9 +7,11 @@ import {
   Icon,
   Button,
   message,
+  Select,
 } from 'antd';
 
 function AdminAdd(props) {
+  const { history, createChild } = props;
   const { getFieldDecorator } = props.form;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -19,51 +21,69 @@ function AdminAdd(props) {
       if (!err) {
         try {
           setIsSubmitting(true);
-          await props.createChild({
+          await createChild({
             ...values,
           });
-          message.success('Admin created successfully.');
-          props.history.push('/children/list');
+          message.success('Child added successfully.');
+          history.push('/children/list');
         } catch (error) {
           message.error(error.message);
           setIsSubmitting(false);
         }
       }
     });
-  }, [props]);
+  }, [createChild, history, props.form]);
 
   return (
     <Card
       title={<div>Add Child <Link to="/children/list" style={{ float: 'right' }}>Back To List</Link></div>}
     >
       <form onSubmit={handleSubmit}>
-        <Form.Item label="Name">
+        <Form.Item label="First Name">
           {
-            getFieldDecorator('name', {
-              rules: [{ required: true, message: 'Please input your name.' }],
+            getFieldDecorator('firstname', {
+              rules: [{ required: true, message: 'Please input firstname.' }],
             })(
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Name" />,
+              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="First Name" />,
             )
           }
         </Form.Item>
-        <Form.Item>
+
+        <Form.Item label="Middle Name">
           {
-            getFieldDecorator('email', {
-              rules: [{ required: true }],
+            getFieldDecorator('middlename', {
+              rules: [{ required: true, message: 'Please input middlename.' }],
             })(
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />,
+              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Middle Name" />,
             )
           }
         </Form.Item>
-        <Form.Item>
+
+        <Form.Item label="Last Name">
           {
-            getFieldDecorator('password', {
-              rules: [{ required: true }],
+            getFieldDecorator('lastname', {
+              rules: [{ required: true, message: 'Please input lastname.' }],
             })(
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Password" />,
+              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Last Name" />,
             )
           }
         </Form.Item>
+
+        <Form.Item label="Gender">
+          {
+            getFieldDecorator('gender', {
+              rules: [{ required: true, message: 'Please input gender.' }],
+            })(
+              <Select
+                placeholder="Select gender"
+              >
+                <Select.Option value="male">Male</Select.Option>
+                <Select.Option value="female">Female</Select.Option>
+              </Select>
+            )
+          }
+        </Form.Item>
+
         <Button type="primary" loading={isSubmitting} htmlType="submit">Save</Button>
       </form>
     </Card>

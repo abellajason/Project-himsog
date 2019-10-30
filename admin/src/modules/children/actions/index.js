@@ -8,14 +8,14 @@ export function createChild(data) {
 
 export function getChildren(query = {}) {
   return async function (dispatch) {
-    const users = await app.service('children').find({
+    const data = await app.service('children').find({
       query: {
         ...query,
       },
     });
 
-    dispatch({ type: 'CHILD_LIST', data: users });
+    dispatch({ type: 'CHILD_LIST', data });
 
-    return users;
+    return data;
   };
 }

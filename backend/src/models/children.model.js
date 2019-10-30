@@ -11,9 +11,15 @@ module.exports = function (app) {
     lastname: { type: String },
     gender: { type: String },
     birthdate: { type: Date },
-    height: { type: Number },
-    weight: { type: Number },
+    region: String,
+    province: String,
+    city: String,
+    barangay: String,
+    height: { type: Number, required: true },
+    weight: { type: Number, required: true },
     bmi: { type: Number },
+    isMalnourished: { type: Boolean },
+    age: Number,
   }, {
     timestamps: true
   });

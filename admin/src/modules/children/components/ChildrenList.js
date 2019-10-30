@@ -12,23 +12,40 @@ import {
 
 import { Link } from 'react-router-dom';
 
-const columns = [
-  {
-    title: 'ID',
-    dataIndex: '_id',
-    key: '_id',
-  },
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
-  },
-];
+function getColumns() {
+  return  [
+    {
+      title: 'ID',
+      dataIndex: '_id',
+      key: '_id',
+    },
+    {
+      title: 'First Name',
+      dataIndex: 'firstname',
+      key: 'firstname',
+    },
+    {
+      title: 'Middle Name',
+      dataIndex: 'middlename',
+      key: 'middlename',
+    },
+    {
+      title: 'Last Name',
+      dataIndex: 'lastname',
+      key: 'lastname',
+    },
+    {
+      title: '',
+      dataIndex: '_id',
+      key: 'actions',
+      render: _id => {
+        return (
+          <Link to={`/children/view/${_id}`}>View</Link>
+        );
+      },
+    }
+  ];
+}
 
 export default function AdminList(props) {
   const [isFetching, setIsFetching] = useState(false);
@@ -55,14 +72,14 @@ export default function AdminList(props) {
       return null;
     }
 
-    return dataIds.map(_id => props.users.byId[_id] || {});
-  }, [props.users.byId, dataIds]);
+    return dataIds.map(_id => props.children.byId[_id] || {});
+  }, [props.children.byId, dataIds]);
 
   return (
     <Card
       title={<div>List of Children <Link to="/children/add" style={{ float: 'right' }}>New</Link></div>}
     >
-      <Table columns={columns} dataSource={dataSource} rowKey="_id" size="small" loading={isFetching}/>
+      <Table columns={getColumns()} dataSource={dataSource} rowKey="_id" size="small" loading={isFetching}/>
     </Card>
   );
 }

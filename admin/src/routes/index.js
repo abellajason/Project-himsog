@@ -11,6 +11,7 @@ import Admins from '../modules/admins/routes';
 import Volunteers from '../modules/volunteers/routes';
 import Children from '../modules/children/routes';
 import Dashboard from '../modules/dashboard/containers/Dashboard';
+import DonationAdd from '../modules/donations/containers/DonationAdd';
 
 function NotFound() {
   return (
@@ -65,12 +66,12 @@ class MainRoutes extends React.Component {
 
     return (
       <Switch>
+        <Route exact path="/donate" component={DonationAdd}></Route>
         <UnauthenticatedOnlyRoute path="/login" component={Login} isAuthenticated={isAuthenticated}></UnauthenticatedOnlyRoute>
         <UnauthenticatedOnlyRoute path="/signup" component={Signup} isAuthenticated={isAuthenticated}></UnauthenticatedOnlyRoute>
         <PrivateRoute path="/volunteers" component={Volunteers} {...{isAuthenticated}}></PrivateRoute>
         <PrivateRoute path="/admins" component={Admins} {...{isAuthenticated}}></PrivateRoute>
         <PrivateRoute path="/children" component={Children} {...{isAuthenticated}}></PrivateRoute>
-
         <PrivateRoute exact path="/" component={Dashboard} {...{ isAuthenticated }}></PrivateRoute>
         <PrivateRoute path="/dashboard" component={Dashboard} {...{ isAuthenticated }}></PrivateRoute>
         <PrivateRoute component={NotFound} isAuthenticated={isAuthenticated}></PrivateRoute>
