@@ -6,40 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Project Himsog</title>
-  <link rel="stylesheet" href="public/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Nunito&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="public/css/normalize.css">
+  <link rel="stylesheet" href="public/css/styles.css">
 </head>
 
 <body>
   <header>
-    <img class="logo" src=" public/img/logo-black.png" alt="Project Himsog logo">
+    <img class="logo" src=" public/img/logo-white.png" alt="Project Himsog logo">
+    <button id="mobile-nav-toggle">
+      <span class="hamburger-btn"></span>
+      <span class="hamburger-btn"></span>
+    </button>
     <nav>
       <ul>
         <li>Home</li>
         <li>Our Cause</li>
         <li>Who Are We</li>
       </ul>
-      <a href="#" class="cta">Become A Volunteer</a>
-      <a href="#" class="cta">Become Our Partner</a>
+      <a href="#" class="cta secondary">Be A Volunteer</a>
+      <a href="#" class="cta primary">Donate</a>
     </nav>
   </header>
   <main>
     <section id="top-home">
-      <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti aut deserunt eligendi reprehenderit minima!
-      </h1>
+      <div class="top-home-content">
+        <h1 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti aut deserunt eligendi reprehenderit
+          minima!</h1>
+        <a href="#" class="cta secondary">Be A Volunteer</a>
+        <a href="#" class="cta primary">Donate</a>
+      </div>
     </section>
     <section id="our-cause">
-      <h1>Our Cause</h1>
-      <p></p>
+      <h1 class="title" data-aos="fade-up" data-aos-duration="1250">Our Cause</h1>
+      <p data-aos="fade-up" data-aos-duration="1350">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, labore nesciunt quis laudantium facilis fugit blanditiis amet molestias asperiores reiciendis esse recusandae, dolorem, quam hic id! Omnis, dolore fugiat nesciunt laboriosam perspiciatis vel minus quo similique iste optio quasi nihil maxime! Corrupti consectetur tempore obcaecati aliquam molestiae deserunt explicabo quod?</p>
     </section>
     <section id="who-are-we">
-      <h1>Who Are We</h1>
-      <p></p>
+      <h1 class="title" data-aos="fade-up" data-aos-duration="1250">Who Are We</h1>
+      <p data-aos="fade-up" data-aos-duration="1350">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque beatae quis molestias nulla, adipisci sequi eos necessitatibus facere dolores possimus numquam aspernatur enim doloremque repudiandae, temporibus commodi vitae ipsum? Officiis, pariatur animi rerum porro dicta excepturi libero. Animi exercitationem aperiam, numquam molestiae quis consequuntur, suscipit a nemo, eveniet neque rerum?</p>
     </section>
   </main>
   <footer>
 
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="public/js/main.js"></script>
 </body>
 
 </html>
