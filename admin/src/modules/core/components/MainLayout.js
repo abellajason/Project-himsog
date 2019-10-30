@@ -47,6 +47,14 @@ export default function MainLayout(props) {
           <Link to="/volunteers/list">Volunteers</Link>
         </Menu.Item>
 
+        <Menu.Item key="/children/list">
+          <Link to="/children/list">Children</Link>
+        </Menu.Item>
+
+        <Menu.Item key="/donations/list">
+          <Link to="/donations/list">Donations</Link>
+        </Menu.Item>
+
         <Menu.Item key="logout" style={{ float: 'right' }}>
           <a href="logout" onClick={handleLogout}>Logout</a>
         </Menu.Item>
