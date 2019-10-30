@@ -14,6 +14,7 @@ module.exports = function (app) {
     height: { type: Number },
     weight: { type: Number },
     bmi: { type: Number },
+    isMalnourished: { type: Boolean },
   }, {
     timestamps: true
   });
