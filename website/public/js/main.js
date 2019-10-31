@@ -51,3 +51,7 @@ whoBtn.addEventListener('click', () => {
         nav.classList.remove('toggled');
     }
 })
+
+// Parallax
+
+const rellax = new Rellax('.rellax');
