@@ -10,15 +10,33 @@ import {
   Table,
 } from 'antd';
 
-import { Link } from 'react-router-dom';
-
 function getColumns() {
   return  [
     {
-      title: 'ID',
-      dataIndex: '_id',
-      key: '_id',
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
     },
+    {
+      title: 'Organization/Company',
+      dataIndex: 'organization',
+      key: 'organization',
+    },
+    {
+      title: 'Amount',
+      dataIndex: 'amount',
+      key: 'amount',
+    },
+    {
+      title: 'Currency',
+      dataIndex: 'currency',
+      key: 'currency',
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description',
+    }
   ];
 }
 
