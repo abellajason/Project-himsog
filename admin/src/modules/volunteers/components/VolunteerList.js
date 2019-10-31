@@ -17,11 +17,6 @@ import { Link } from 'react-router-dom';
 const getColumns = function(setApproval) {
   return [
     {
-      title: 'ID',
-      dataIndex: '_id',
-      key: '_id',
-    },
-    {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
