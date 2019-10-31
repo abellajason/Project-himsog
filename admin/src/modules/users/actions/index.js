@@ -19,3 +19,14 @@ export function getUsers(query = {}) {
     return users;
   };
 }
+
+export function patchUser(_id, data = {}) {
+  return async function(dispatch) {
+    const result = await app.service('users').patch(_id, data);
+
+    console.log(result);
+    dispatch({ type: 'UPDATE_USER', data: result });
+
+    return result;
+  }
+}
