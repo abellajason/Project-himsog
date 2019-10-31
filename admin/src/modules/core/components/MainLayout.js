@@ -7,6 +7,7 @@ import {
 const { Header, Content, Footer } = Layout;
 
 export default function MainLayout(props) {
+  const { logout, history, mainUser } = props;
   let defaultPath = props.path || '/';
 
   if (defaultPath === '/dashboard') {
@@ -17,12 +18,18 @@ export default function MainLayout(props) {
     async function handleLogout(e) {
       try {
         e.preventDefault();
-        await props.logout();
-        props.history.push('/');
+        await logout();
+        history.push('/');
       } catch (error) {
         message.error(error.message);
       }
     }
+
+    if (!mainUser) {
+      return null;
+    }
+
+    const isVolunteer = mainUser.role === 'volunteer';
 
     return (
       <Menu
@@ -34,18 +41,26 @@ export default function MainLayout(props) {
         <Link to="/">
           <img src="/logo192.png" alt="" style={{ maxWidth: 60, padding: '10px' }} />
         </Link>
-        
+
         <Menu.Item key="/">
           <Link to="/">Home</Link>
         </Menu.Item>
 
-        <Menu.Item key="/admins/list">
-          <Link to="/admins/list">Admins</Link>
-        </Menu.Item>
+        {
+          !isVolunteer && (
+            <Menu.Item key="/admins/list">
+              <Link to="/admins/list">Admins</Link>
+            </Menu.Item>
+          )
+        }
 
-        <Menu.Item key="/volunteers/list">
-          <Link to="/volunteers/list">Volunteers</Link>
-        </Menu.Item>
+        {
+          !isVolunteer && (
+            <Menu.Item key="/volunteers/list">
+              <Link to="/volunteers/list">Volunteers</Link>
+            </Menu.Item>
+          )
+        }
 
         <Menu.Item key="/children/list">
           <Link to="/children/list">Children</Link>
@@ -60,7 +75,7 @@ export default function MainLayout(props) {
         </Menu.Item>
       </Menu>
     )
-  }, [defaultPath, props]);
+  }, [defaultPath, history, logout, mainUser]);
 
   return (
     <Layout>
