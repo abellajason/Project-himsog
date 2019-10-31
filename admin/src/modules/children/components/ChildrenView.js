@@ -187,19 +187,19 @@ function ChildrenView(props) {
         </p>
 
         <p>
-          <b>Last Age Recorded: </b>{age}
+          <b>Age: </b>{age}
         </p>
 
         <p>
-          <b>Last Height Recorded: </b>{height}
+          <b>Height: </b>{height}
         </p>
 
         <p>
-          <b>Last Weight Recorded: </b>{weight}
+          <b>Weight: </b>{weight}
         </p>
 
         <p>
-          <b>Last BMI Recorded: </b>{bmi ? Math.round(bmi * 100) / 100 : bmi}
+          <b>BMI: </b>{bmi ? Math.round(bmi * 100) / 100 : bmi}
         </p>
 
         <p>
