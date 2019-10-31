@@ -13,8 +13,9 @@ import {
 import { CardElement, injectStripe } from 'react-stripe-elements';
 
 function DonationAdd(props) {
+  const [isSuccessful, setIsSuccessful] = useState(false);
   const { getFieldDecorator } = props.form;
-const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(e) {
   e.preventDefault();
@@ -51,7 +52,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         await props.createDonation(formData);
 
         message.success('Donated successfully.');
-        props.history.push('/');
+        setIsSuccessful(true);
       } catch (error) {
         message.error(error.message);
         setIsSubmitting(false);
@@ -59,7 +60,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     }
   });
 }
-
 
   return (
       <div>
@@ -71,45 +71,51 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         </div>
 
         <Card style={{ margin: 'auto', maxWidth: 600 }}>
-          <Form onSubmit={handleSubmit} className="login-form" style={{ margin: 'auto' }}>
-            <Form.Item label="Name" style={{textAlign: 'left'}}>
-            {
-              getFieldDecorator('name', {})(
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Name" />
-              )
-            }
-            </Form.Item>
-            <Form.Item label="Organization/Company" style={{textAlign: 'left'}}>
-              {
-                getFieldDecorator('organization', {})(
-                  <Input prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Organization/Company" />
-                )
-              }
-            </Form.Item>
-            <Form.Item label="Donation Amount" style={{textAlign: 'left'}}>
-              {
-                getFieldDecorator('amount', {
-                  rules: [{ required: true }],
-                  initialValue: 1000,
-                  min: 1000,
-                })(
-                  <InputNumber
-                    style={{ width: '100%' }}
-                    formatter={value => `₱ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    parser={value => value.replace(/\₱\s?|(,*)/g, '')}
-                  />,
-                )
-              }
-            </Form.Item>
-            <Form.Item>
-              <CardElement />
-            </Form.Item>
-            <Form.Item>
-              <Button type="primary" htmlType="submit" className="login-form-button" loading={isSubmitting}>
-                Let's nourish the children!
-              </Button>
-            </Form.Item>
-          </Form>
+          {
+            isSuccessful ? (
+              <h3>We appreciate your kindness.</h3>
+            ) : (
+              <Form onSubmit={handleSubmit} className="login-form" style={{ margin: 'auto' }}>
+                <Form.Item label="Name" style={{textAlign: 'left'}}>
+                {
+                  getFieldDecorator('name', {})(
+                  <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Name" />
+                  )
+                }
+                </Form.Item>
+                <Form.Item label="Organization/Company" style={{textAlign: 'left'}}>
+                  {
+                    getFieldDecorator('organization', {})(
+                      <Input prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Organization/Company" />
+                    )
+                  }
+                </Form.Item>
+                <Form.Item label="Donation Amount" style={{textAlign: 'left'}}>
+                  {
+                    getFieldDecorator('amount', {
+                      rules: [{ required: true }],
+                      initialValue: 1000,
+                      min: 1000,
+                    })(
+                      <InputNumber
+                        style={{ width: '100%' }}
+                        formatter={value => `₱ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                        parser={value => value.replace(/\₱\s?|(,*)/g, '')}
+                      />,
+                    )
+                  }
+                </Form.Item>
+                <Form.Item label="Credit Card Number" style={{textAlign: 'left'}}>
+                  <CardElement/>
+                </Form.Item>
+                <Form.Item>
+                  <Button type="primary" htmlType="submit" className="login-form-button" loading={isSubmitting}>
+                    Let's nourish the children!
+                  </Button>
+                </Form.Item>
+              </Form>
+            )
+          }
         </Card>
         </center>
       </div>
