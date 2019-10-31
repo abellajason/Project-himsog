@@ -198,19 +198,36 @@ main section {
   }
 }
 #contact-us {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 300px;
-  color: #111111;
+  color: #ffffff;
   background: url('../img/contact-us.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
-  p {
-    width: 90%;
-    text-align: center;
-    margin: 0 auto;
+  .big-text {
+    margin: 0;
+
+    .highlight {
+      color: $primaryColor;
+    }
   }
+}
+#contact-us::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  opacity: .4;
 }
 footer {
   background-color: #111111;

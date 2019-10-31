@@ -253,6 +253,7 @@ main section {
 }
 
 #contact-us {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -267,14 +268,31 @@ main section {
       -ms-flex-align: center;
           align-items: center;
   height: 300px;
-  color: #111111;
+  color: #ffffff;
   background: url("../img/contact-us.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-#contact-us p {
-  width: 90%;
-  text-align: center;
-  margin: 0 auto;
+#contact-us .big-text {
+  margin: 0;
+}
+
+#contact-us .big-text .highlight {
+  color: #71a95a;
+}
+
+#contact-us::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  opacity: .4;
 }
 
 footer {
