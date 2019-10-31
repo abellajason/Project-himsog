@@ -4,6 +4,7 @@ import {
   Card
 } from 'antd';
 
+const data = Array(25).fill().map(Math.random);
 export default function Dashboard() {
   return (
     <Card

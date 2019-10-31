@@ -1,4 +1,5 @@
-$primaryColor: #efefef;
+$primaryColor: #71a95a;
+$primaryDarker: #007944;
 $accentColor: #999999;
 $mainTypeface: 'Oswald', sans-serif;
 $defaultTypeface: 'Nunito', sans-serif;
@@ -21,7 +22,7 @@ header {
   z-index: 999;
 }
 header.header-scrolled {
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.7);
 }
 .logo {
   width: 50px;
@@ -46,6 +47,19 @@ header.header-scrolled {
     height: 3px;
     background-color: #ffffff;
     border-radius: 5px;
+    transition: all 200ms ease-in-out;
+  }
+}
+#mobile-nav-toggle.toggled {
+  z-index: 999;
+
+  .hamburger-btn:first-of-type {
+    background-color: #000000;
+    transform: rotate(45deg);
+  }
+  .hamburger-btn:last-of-type {
+    background-color: #000000;
+    transform: translateY(-8px) rotate(-45deg);
   }
 }
 nav {
@@ -57,12 +71,13 @@ nav {
     margin: 0px;
 
     li {
-      color: #111111;
       font-size: 22px;
       font-weight: bold;
       padding: 10px;
+      cursor: pointer;
 
       a {
+        color: #111111;
         text-decoration: none;
       }
     }
@@ -80,10 +95,10 @@ nav.toggled {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #ffffff;
+  background-color: rgba(255,255,255,.8);
   text-align: center;
 
-  a {
+  .cta {
     display: none;
   }
 }
@@ -98,8 +113,17 @@ nav.toggled {
   border-radius: 2px;
 }
 .cta.primary {
-  background-color: #111111;
-  border-color: #111111;
+  background-color: $primaryColor;
+  border-color: $primaryColor;
+}
+.cta.primary:hover {
+  background-color: $primaryDarker;
+  border-color: $primaryDarker;
+}
+.cta.secondary:hover {
+  color: #111111;
+  background-color: rgba(255,255,255,.5);
+  border-color: #ffffff;
 }
 .title {
   text-align: center;
@@ -140,13 +164,17 @@ nav.toggled {
   bottom: 0;
   left: 0;
   background-color: #000000;
-  opacity: .2;
+  opacity: .4;
 }
 main section {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  width: 100%;
+  height: 100vh;
 }
 #our-cause {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #ffffff;
 
   p {
@@ -156,7 +184,12 @@ main section {
   }
 }
 #who-are-we {
-  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background-color: $primaryColor;
 
   p {
     width: 90%;
@@ -164,9 +197,46 @@ main section {
     margin: 0 auto;
   }
 }
+#contact-us {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  color: #ffffff;
+  background: url('../img/contact-us.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .big-text {
+    margin: 0;
+
+    .highlight {
+      color: $primaryColor;
+    }
+  }
+}
+#contact-us::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  opacity: .4;
+}
 footer {
   background-color: #111111;
+  text-align: center;
   padding: 20px 15px;
+
+  p {
+    color: #ffffff;
+  }
 }
 @media only screen and (min-width : 768px) {
   #mobile-nav-toggle {
@@ -185,9 +255,20 @@ footer {
       align-items: center;
 
       li {
-        color: #ffffff;
         font-size: 16px;
+
+        a {
+          color: #ffffff;;
+        }
       }
     }
+  }
+  .cta.secondary {
+      margin-right: 10px;
+    }
+  .title {
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
 }

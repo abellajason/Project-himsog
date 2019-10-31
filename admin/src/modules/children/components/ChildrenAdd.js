@@ -13,8 +13,6 @@ import {
   DatePicker,
 } from 'antd';
 
-console.log(cities);
-
 const regions = Object.keys(cities);
 
 function AdminAdd(props) {
