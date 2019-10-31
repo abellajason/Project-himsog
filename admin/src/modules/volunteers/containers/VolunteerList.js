@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getUsers } from '../../users/actions';
+import { getUsers, patchUser } from '../../users/actions';
 
 import Component from '../components/VolunteerList';
 
@@ -15,6 +15,7 @@ const mapDispatchToProps = function (dispatch) {
   return (
     bindActionCreators({
       getUsers,
+      patchUser
     }, dispatch)
   );
 };

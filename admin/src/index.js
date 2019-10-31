@@ -6,6 +6,9 @@ import store from './redux/store';
 import app from './feathers';
 import './lib/assets';
 import * as serviceWorker from './serviceWorker';
+import {
+  message
+} from 'antd';
 
 serviceWorker.unregister();
 
@@ -16,6 +19,11 @@ const initializeApp = function () {
 };
 
 app.on('authenticated', ({ user: mainUser }) => {
+  if (mainUser && mainUser.role === 'volunteer' && !mainUser.isApproved) {
+    message.error('Your account is not yet approved.');
+    return;
+  }
+
   (function getmainUser() {
     store.dispatch({
       type: 'LOGIN',

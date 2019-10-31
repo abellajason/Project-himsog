@@ -24,6 +24,7 @@ function NormalLoginForm(props) {
         try {
           setIsLoggingIn(true);
           await login(values);
+          setIsLoggingIn(false);
         } catch (error) {
           setErrorMessage(error.message);
           setIsLoggingIn(false);

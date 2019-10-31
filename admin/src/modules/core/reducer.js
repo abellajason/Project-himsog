@@ -22,16 +22,16 @@ export default function coreReducer(state = defaultData, action) {
       };
     }
 
-    case 'UPDATE_USER': {
-      if (state.mainUser && state.mainUser._id && action.data && action.data._id === state.mainUser._id) {
-        return {
-          ...state,
-          mainUser: { ...(state.mainUser || {}), ...action.data },
-        };
-      }
-
-      break;
-    }
+    // case 'UPDATE_USER': {
+    //   if (state.mainUser && state.mainUser._id && action.data && action.data._id === state.mainUser._id) {
+    //     return {
+    //       ...state,
+    //       mainUser: { ...(state.mainUser || {}), ...action.data },
+    //     };
+    //   }
+    //
+    //   break;
+    // }
 
     default:
       return state;
